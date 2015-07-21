@@ -1,0 +1,26 @@
+{
+  "name": "cheer",
+  "version": "1.0.0",
+  "description": "cheer.js",
+  "main": "cheer.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edstros/cheer.git"
+  },
+  "author": "Edwin Acevedo <edwin.a.acevedo@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edstros/cheer/issues"
+  },
+  "homepage": "https://github.com/edstros/cheer#readme",
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5"
+  },
+  "dependencies": {
+    "prompt": "^0.2.14"
+  }
+}
