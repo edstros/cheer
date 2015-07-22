@@ -12,7 +12,7 @@ describe('Tests', function () {
 });
 describe('split', function () {
   it('should split on the letters', function (name) {
-    var nameArray = [];
+
     prompt.message = prompt.delimeter = '';
     prompt.start();
     prompt.get('name', function (err, result) {

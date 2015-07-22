@@ -12,7 +12,6 @@ function printCheer() {
 }
 
 
-
 module.exports = function () {
     printCheer();
     process.exit(1);

@@ -1,37 +1,18 @@
 #!/usr/bin/env node
 
-var fs = require('fs'); //file system, needs to be required. part of node but not baked in
 var prompt = require('prompt');
-
-
-
-/*
-prompt.override = argv;
-prompt.message = prompt.delimeter = '';
-prompt.start();
-*/
 
 prompt.get('name', function (err, result) {
   printCheer(result.name);
 });
 
-
 function printCheer(name) {
-  console.log('Hello, ' + name + '!');
+     console.log('Hello, ' + name + '!');
     var options = {
       encoding: 'utf8'
     };
+    var letters = name.split('');
+    for (var i = 0; i < letters.length; i++)
+      process.stdout.write('Give me a ' + letters[i] + '!\n'); //more direct way to write to the console;
 
-
-  process.stdout.write('Hello ' + name + ' Again!\n'); //more direct way to write to the console;
-
-}
-
-/*
-app should:
-- prompt for a name input
-- split the on the letters of the name
-- make the letters uppercase
-- concat 'Give me ' + a/an 'letter'
-- new line for each letter
-*/
+    }
