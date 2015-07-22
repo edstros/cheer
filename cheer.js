@@ -11,8 +11,7 @@ function printCheer(name) {
     var options = {
       encoding: 'utf8'
     };
-    var letters = name.split('');
+    var letters = name.toUpperCase().split('');
     for (var i = 0; i < letters.length; i++)
       process.stdout.write('Give me a ' + letters[i] + '!\n'); //more direct way to write to the console;
-
     }
