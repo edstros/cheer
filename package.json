@@ -18,6 +18,7 @@
   "homepage": "https://github.com/edstros/cheer#readme",
   "devDependencies": {
     "chai": "^3.2.0",
+    "lodash": "^3.10.0",
     "mocha": "^2.2.5"
   },
   "dependencies": {
