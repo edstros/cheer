@@ -1,125 +1,21 @@
 var should = require('chai').should();
-var prompt = require('prompt');
-//var Animal = require(path.join(process.cwd() + '/lib/Animal'));
 var cp = require('child_process');
-//process.cwd goes to the root dir, so it can go to any directory from the root
-//path.join gives you a proper path, but need to be defined
 describe('Tests', function () {
   it('truthyness', function () {
     true.should.equal(true);
   });
 });
 describe.only('CLI', function () {
-  it('should write a line for each letter of user input', function () {
-
-    cp.execFile('./cheer.js', function (err, stdout) {
-      var name = 'name';
-      stdout.should.equal('Give me an N!\n Give me an A!\n Give me an M!\n Give me an E!\n');
-
+  it('should handle lowercase letters', function (done) {
+    cp.execFile('./cheer.js', ['name'], function (err, stdout) {
+      stdout.should.equal('Give me an N!\n Give me an A!\n Give me an M!\n Give me an E!\n')
       done();
     });
   });
-});
-describe('Print Cheer', function () {
-  describe('Split', function () {
-    it('should split the words from the input', function () {
-      cp.execFile('./cheer.js', function (err, stdout) {
-        var name = 'name';
-        stdout.should.equal('N, A, M, E');
-      });
-    });
-    it('should remove white spaces', function () {
-      cp.execFile('./cheer.js', function (err, stdout) {
-        var name = 'double name';
-        stdout.should.equal('D, O, U, B, L, E, N, A, M, E');
-      })
-    });
-  });
-});
-
-
-/*
-describe('Animal', function () {
-  describe('constructor', function () {
-    it('should return an animal object', function () {
-      var animal = new Animal();
-      animal.should.be.an('object');
-      animal.should.be.an.instanceOf(Animal);
-    });
-    it('should be alive', function () {
-      var animal = new Animal();
-      animal.isAlive.should.be.true;
-      //defined in Animal.js
-    });
-    it('should have 100% health', function () {
-      var animal = new Animal();
-      animal.health.should.equal(1);
-    });
-    it('should accept a type', function () {
-      var cat = new Animal('cat');
-      var dog = new Animal('dog');
-      cat.type.should.equal('cat');
-      dog.type.should.equal('dog');
+  it('should remove spaces in multiple word names', function () {
+    cp.execFile('./cheer.js', ['Jim Bob'], function (err, stdout) {
+      stdout.should.equal('Give me a J!\n Give me an I!\n Give me an M!\n Give me a B!\n Give me an O!\n Give me a B!\n')
+      done();
     })
   });
-  describe('#updateHealthStats', function () {
-    it('should change the health', function (done) {
-     //need done agrument passed into the it block so that it waits on timeout
-      var animal = new Animal();
-      animal.updateHealthStats(function () {
-        animal.health.should.not.equal(1);
-        done();
-      });
-    })
-  })
-  describe('#beCute()', function () {
-    it('should be a prototype method', function () {
-      var animal = new Animal();
-      animal.should.respondTo('beCute');
-      animal.should.not.have.ownProperty('beCute');
-    });
-    it('should make the animal cute', function () {
-      var animal = new Animal();
-      should.not.exist(animal.isCute);
-      //no cute animals until beCute
-      animal.beCute();
-      animal.isCute.should.be.true;
-    });
-  });
 });
-describe('Array', function () {
-  describe('#filter()', function () {
-    it('should return an array of items that return truthy in the innner fn', function () {
-      var array = [1, 2, 3, 4, 5];
-      var output = array.filter(function (item) {
-        return item % 2;
-        //filter out even numbers
-      });
-      output.should.eql([1, 3, 5]);
-    });
-  });
-  describe('#map()', function () {
-    it('should create an array with the return value of the inner fn', function () {
-      var array = [1, 2, 3, 4, 5];
-      var output = array.map(function (item) {
-        return item * item;
-      });
-      output.should.eql([1, 4, 9, 16, 25]);
-    });
-    it('should keep the same length', function () {
-      var array = [1, 2, 3, 4, 5];
-      var length = array.map(function (item) {
-        return false;
-      }).length;
-      length.should.equal(array.length);
-    });
-    it('should not mutate the original array', function () {
-      var array = [1, 2, 3, 4, 5];
-      array.map(function () {
-        return false;
-      });
-      array.should.eql([1, 2, 3, 4, 5]);
-    });
-  });
-});
-*/
