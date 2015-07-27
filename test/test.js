@@ -1,4 +1,3 @@
-var path = require('path');
 var should = require('chai').should();
 var prompt = require('prompt');
 //var Animal = require(path.join(process.cwd() + '/lib/Animal'));
@@ -10,31 +9,34 @@ describe('Tests', function () {
     true.should.equal(true);
   });
 });
-describe('split', function () {
-  it('should split on the letters', function (name) {
+describe.only('CLI', function () {
+  it('should write a line for each letter of user input', function () {
 
-    prompt.message = prompt.delimeter = '';
-    prompt.start();
-    prompt.get('name', function (err, result) {
-    printCheer(result.name);
-    });
-    name.split('').push(nameArray);
-  });
-});
-/*
-describe.only('CLI', function(){
-  it('should write a line for each letter of user input', function (name){
-    console.log('childprocess');
-    cp.execFile('./app.js', function (err, stdout) {
-      console.log('err', err);
-      console.log('stdout', stdout);
-      stdout.should.equal('Thanks for downloading my app!\n');
-      //fails when console.log() from app.js has different output
+    cp.execFile('./cheer.js', function (err, stdout) {
+      var name = 'name';
+      stdout.should.equal('Give me an N!\n Give me an A!\n Give me an M!\n Give me an E!\n');
+
       done();
     });
-  })
+  });
 });
-*/
+describe('Print Cheer', function () {
+  describe('Split', function () {
+    it('should split the words from the input', function () {
+      cp.execFile('./cheer.js', function (err, stdout) {
+        var name = 'name';
+        stdout.should.equal('N, A, M, E');
+      });
+    });
+    it('should remove white spaces', function () {
+      cp.execFile('./cheer.js', function (err, stdout) {
+        var name = 'double name';
+        stdout.should.equal('D, O, U, B, L, E, N, A, M, E');
+      })
+    });
+  });
+});
+
 
 /*
 describe('Animal', function () {
