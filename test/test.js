@@ -12,7 +12,7 @@ describe.only('CLI', function () {
       done();
     });
   });
-  it('should remove spaces in multiple word names', function () {
+  it('should remove spaces in multiple word names', function (done) {
     cp.execFile('./cheer.js', ['Jim Bob'], function (err, stdout) {
       stdout.should.equal('Give me a J!\n Give me an I!\n Give me an M!\n Give me a B!\n Give me an O!\n Give me a B!\n')
       done();
