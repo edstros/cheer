@@ -1,20 +1,7 @@
 #!/usr/bin/env node
-
-/*
-var prompt = require('prompt');
-prompt.get('name', function (err, result) {
-  printCheer(result.name);
-});
-*/
-
-/*function printCheer(name) {*/
-//  console.log('All right, it\'s ' + name.toUpperCase() + '!'); //separate the letters in the name
-
   var args = [];
-
   for (var i = 2; i < process.argv.length; i++) {
     args.push(process.argv[i]);
-
     var letters = args.toString().toUpperCase().split('');
     letters = letters.filter(function (str) { //filter removes the white spaces returned by indexOf
       return str.indexOf(' ');
@@ -27,4 +14,3 @@ prompt.get('name', function (err, result) {
       };
     }
   }
-//}
